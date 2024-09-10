@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  nifty50-stock-ingestor:
+    build:
+      context: ./app
+      dockerfile: Dockerfile.app
+    container_name: nifty50-stock-ingestor
+    environment:
+      - ELASTICSEARCH_HOST=
+      - ELASTICSEARCH_USERNAME=
+      - ELASTICSEARCH_PASSWORD=
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
